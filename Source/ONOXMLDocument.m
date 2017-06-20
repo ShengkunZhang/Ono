@@ -629,7 +629,7 @@ static void ONOSetErrorFromXMLErrorPtr(NSError * __autoreleasing *error, xmlErro
     xmlNodePtr cursor = self.xmlNode->children;
     NSUInteger idx = 0;
     while (cursor) {
-        if ([indexes containsIndex:idx] && cursor->type == XML_ELEMENT_NODE) {
+        if ([indexes containsIndex:idx] && (cursor->type == XML_ELEMENT_NODE || cursor->type == XML_TEXT_NODE)) {
             [mutableChildren addObject:[self.document elementWithNode:cursor]];
         }
 
